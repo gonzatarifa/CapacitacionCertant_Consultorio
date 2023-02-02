@@ -21,4 +21,8 @@ public class ViewRouteHelper {
 	public final static String PERFIL_LISTA = "perfil/lista";
 	public final static String PERFIL_CREAR = "perfil/crear";	
 	
+	public final static String PACIENTE_LISTA = "paciente/lista";
+	public final static String PACIENTE_CREAR = "paciente/crear";	
+	public final static String PACIENTE_REDIRECT_LISTA = "redirect:/paciente/lista";	
+	
 }

@@ -3,9 +3,11 @@ package com.certant.Consultorio.services;
 import java.util.List;
 
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Service;
 
 import com.certant.Consultorio.entities.Perfiles;
 
+@Service
 public interface IPerfilesService {
 	
 	public List<Perfiles> getAll();

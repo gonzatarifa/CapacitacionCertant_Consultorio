@@ -68,14 +68,18 @@
 	<div class="container">
 
 		<a class="btn btn-primary btn-sm"
-			sec:authorize="hasAuthority('Administrador')" th:href="@{/perfiles/}"
-			th:text="'Crear Perfil'" title="Crear nuevo perfil"> </a>
+			sec:authorize="hasAuthority('Administrador')" th:href="@{/paciente/}"
+			th:text="'Crear Paciente'" title="Crear nuevo paciente"> </a>
 
 
 		<table class="table">
 			<thead class="thead-dark">
 				<tr>
-					<th scope="col">Roles de los perfiles</th>
+					<th scope="col">Nombre</th>
+					<th scope="col">Apellido</th>
+					<th scope="col">DNI</th>
+					<th scope="col">Email</th>
+					<th scope="col">Observaciones</th>
 					<th scope="col" sec:authorize="hasAuthority('Administrador')">Editar</th>
 					<th scope="col" sec:authorize="hasAuthority('Administrador')">Eliminar</th>
 				</tr>
@@ -83,28 +87,26 @@
 			<tbody>
 				<tr th:each="li:${lista}">
 
-					<th scope="row" th:text="${li.rol}"></th>
+					<th scope="row" th:text="${li.nombre}"></th>
+					<th scope="row" th:text="${li.apellido}"></th>
+					<th scope="row" th:text="${li.dni}"></th>
+					<th scope="row" th:text="${li.email}"></th>
+					<th scope="row" th:text="${li.observaciones}"></th>
 
 					<td sec:authorize="hasAuthority('Administrador')"><a
 						class="btn btn-success btn-sm"
-						th:href="@{/perfiles/lista/edit/}+${li.id}" th:text="Editar"
-						title="Editar perfil"> </a></td>
+						th:href="@{/paciente/lista/edit/}+${li.id}" th:text="Editar"
+						title="Editar paciente"> </a></td>
 					<td sec:authorize="hasAuthority('Administrador')"><a
 						class="btn btn-danger btn-sm"
-						th:href="@{/perfiles/lista/delete/}+${li.id}" th:text="Eliminar"
-						title="Eliminar perfil"
-						onclick="return confirm('Esta seguro de eliminar el perfil?');">
+						th:href="@{/paciente/lista/delete/}+${li.id}" th:text="Eliminar"
+						title="Eliminar paciente"
+						onclick="return confirm('Esta seguro de eliminar el paciente?');">
 					</a></td>
 				</tr>
 
 			</tbody>
 		</table>
-		
-		<a class="nav-link float-right" sec:authorize="hasAuthority('Auditor')"
-			th:href="@{/perfiles/lista/(format=pdf)}" title="Exportar a PDF" target="_blank">
-
-			<img class="img-responsive center-box" th:src="@{/images/IconoPDF.png}" height="auto">
-		</a>
 
 	</div>
 
