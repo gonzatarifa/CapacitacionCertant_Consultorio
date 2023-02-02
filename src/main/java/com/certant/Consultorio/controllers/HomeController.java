@@ -18,7 +18,7 @@ public class HomeController {
 			return modelAndView;
 		}
 	
-	//index para poder usar el logo unla y volver a inicio
+	//index para poder usar el logo y volver a inicio
 		@GetMapping("/index")
 		public ModelAndView indexx() {
 			ModelAndView modelAndView = new ModelAndView(ViewRouteHelper.INDEX);

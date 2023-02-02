@@ -43,21 +43,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.hasAuthority("Administrador").antMatchers("/usuarios/lista/delete/**").hasAuthority("Administrador")
 				.antMatchers("/usuarios/lista/**").hasAnyAuthority("Auditor", "Administrador")
 
-				.antMatchers("/departamento/").hasAuthority("Administrador").antMatchers("/departamento/lista")
-				.hasAnyAuthority("Auditor", "Administrador").antMatchers("/departamento/lista/edit/**")
-				.hasAuthority("Administrador").antMatchers("/departamento/lista/delete/**")
-				.hasAuthority("Administrador")
-
-				.antMatchers("/espacios/lista").hasAnyAuthority("Auditor", "Administrador")
-				.antMatchers("/espacios/crear/tradicional").hasAnyAuthority("Administrador")
-				.antMatchers("/espacios/crear/laboratorio").hasAnyAuthority("Administrador")
-
-				.antMatchers("/nota-pedido/").hasAnyAuthority("Auditor", "Administrador")
-				.antMatchers("/nota-pedido/manage").hasAnyAuthority("Administrador")
-				.antMatchers(HttpMethod.POST, "/api/nota-pedido/").hasAnyAuthority("Auditor", "Administrador")
-				.antMatchers("/api/nota-pedido/accept/**").hasAnyAuthority("Administrador")
-				.antMatchers("/api/nota-pedido/reject/**").hasAnyAuthority("Administrador").antMatchers("/api/**")
-				.hasAnyAuthority("Auditor", "Administrador")
 
 				.anyRequest().authenticated().and().formLogin().permitAll().and().logout().permitAll();
 	}

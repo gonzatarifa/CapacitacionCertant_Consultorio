@@ -3,14 +3,16 @@
 
 <head th:fragment="head">
 	<meta charset="UTF-8" />
-	<title>UNLa</title>
+	<title>Consultorio</title>
 	<link rel="stylesheet" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
 </head>
 
 <body>
 	<header th:fragment="header">
-		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-			<a class="navbar-brand" href="/index">UNLa</a>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-info">
+			<a class="navbar-brand" href="/index">
+    	    <img src="/images/consultorios.png" width="58" height="45" alt="">
+  		   </a>
 			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
 				data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
 				aria-label="Toggle navigation">
@@ -18,41 +20,14 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
-
+					<li class="nav-item"><a class="nav-link"
+						href="/usuarios/lista">Usuarios</a>
+					</li>	
+					
 					<li class="nav-item">
 						<a class="nav-link" href="/perfiles/lista">Perfiles</a>
 					</li>
 					
-					<li class="nav-item">
-						<a class="nav-link" sec:authorize="hasAnyAuthority('Auditor', 'Administrador')"
-							th:href="@{/departamento/lista/}">Departamentos</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" sec:authorize="hasAnyAuthority('Auditor', 'Administrador')"
-							th:href="@{/aulas/lista/}">Aulas</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" sec:authorize="hasAnyAuthority('Auditor', 'Administrador')"
-							th:href="@{/espacios/lista/}">Espacios</a>
-					</li>
-
-						
-						<li class="nav-item">
-						<a class="nav-link" sec:authorize="hasAnyAuthority('Auditor', 'Administrador')"
-							th:href="@{/carrera/lista/}">Carrera</a>
-					</li>
-					
-					<li class="nav-item">
-						<a class="nav-link" sec:authorize="hasAnyAuthority('Auditor', 'Administrador')"
-							th:href="@{/materia/lista/}">Materia</a>
-					</li>
-					
-						
-					<li class="nav-item">
-						<a class="nav-link" sec:authorize="hasAnyAuthority('Auditor', 'Administrador')"
-							th:href="@{/nota-pedido}">Pedidos</a>
-					</li>
-
 
 					<li class="nav-item">
 						<a class="nav-link" href="/logout">Cerrar sesion</a>
@@ -140,9 +115,9 @@
 	</div>
 
 
-	<footer th:fragment="footer" class="bg-dark text-center text-white fixed-bottom">
+	<footer th:fragment="footer" class="bg-info text-center text-white fixed-bottom">
 		<div class="container">
-			<p>GRUPO 18</p>
+			<p>Consultorio</p>
 		</div>
 
 		<script type="text/javascript" th:src="@{vendor/bootstrap/jquery/jquery.slim.min.js}"></script>

@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content="">
 	<meta name="author" content="">
-	<title>UNLa</title>
+	<title>Consultorio</title>
 
 	<!-- Bootstrap core CSS -->
 	<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -21,9 +21,11 @@
 <body>
 	
 	<!-- Navigation -->
-	<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+	<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-info fixed-top">
 		<div class="container">
-			<a class="navbar-brand" href="/index">UNLa</a>
+			<a class="navbar-brand" href="/index">
+    	    <img src="/images/consultorios.png" width="58" height="45" alt="">
+  		   </a>
 			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
 				data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
 				aria-label="Toggle navigation">
@@ -42,37 +44,6 @@
 							th:href="@{/perfiles/lista/}">Perfiles</a>
 					</li>
 					
-					<li class="nav-item">
-						<a class="nav-link" sec:authorize="hasAnyAuthority('Auditor', 'Administrador')"
-							th:href="@{/departamento/lista/}">Departamentos</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" sec:authorize="hasAnyAuthority('Auditor', 'Administrador')"
-							th:href="@{/aulas/lista/}">Aulas</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" sec:authorize="hasAnyAuthority('Auditor', 'Administrador')"
-							th:href="@{/espacios/lista/}">Espacios</a>
-					</li>
-
-					
-					<li class="nav-item">
-						<a class="nav-link" sec:authorize="hasAnyAuthority('Auditor', 'Administrador')"
-							th:href="@{/carrera/lista/}">Carreras</a>
-					</li>
-					
-					<li class="nav-item">
-						<a class="nav-link" sec:authorize="hasAnyAuthority('Auditor', 'Administrador')"
-							th:href="@{/materia/lista/}">Materia</a>
-					</li>
-					
-
-					<li class="nav-item">
-						<a class="nav-link" sec:authorize="hasAnyAuthority('Auditor', 'Administrador')"
-							th:href="@{/nota-pedido}">Pedidos</a>
-					</li>
-
-
 					<li class="nav-item dropdown">
 						<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle"
 							data-toggle="dropdown" href="#" id="navbarDropdownBlog">Sesion</a>
@@ -105,7 +76,7 @@
 			</ol>
 			<div class="carousel-inner" role="listbox">
 				<div class="carousel-item active"
-					style="background-image: url('https://pbs.twimg.com/media/DqUigO_WwAEV67F.jpg')">
+					style="background-image: url('https://img.freepik.com/vector-premium/consultorio-medico-camilla_603843-2561.jpg?w=2000')">
 					<div class="carousel-caption d-none d-md-block">
 					</div>
 				</div>
@@ -116,44 +87,23 @@
 
 	<!-- /.container -->
 	<div class="container" id="documentacion">
-		<h1 class="bg-white text-center text-dark">SISTEMA DE GESTION DE AULAS</h1>
+		<h1 class="bg-white text-center text-primary">SISTEMA DE GESTION DE CONSULTORIOS</h1>
 		
-		<p class="bg-white text-center text-dark"><i>Trabajo practico para la materia OO2:</i></p>
+		<p class="bg-white text-center text-dark"><i>Proyecto consultorio para certant 2023</i></p>
 
-				<section class="content-section bg-white text-dark text-center" id="services">
-            <div class="container px-4 px-lg-2">
-                <div class="content-section-heading">
-                    <h4 class="mb-5">Integrantes:</h4>
-                </div>
-                <div class="row gx-4 gx-lg-5">
-                    <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
-                        <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-user"></i></span>
-                        <h4><strong>Gonzalo Tarifa</strong></h4>
-                    </div>
-                    <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
-                        <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-user"></i></span>
-                        <h4><strong>Gonzalo Boquete</strong></h4>
-                    </div>
-                    <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
-                        <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-user"></i></span>
-                        <h4><strong>Julian Kominovic</strong></h4> 
-                    </div>
-                    <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
-                        <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-user"></i></span>
-                        <h4><strong>Miguel Caraballo</strong></h4>
-                    </div>
-                </div>
-            </div>
-        </section>	
 		<p></p>
 
 	</div>
 	<!-- Footer -->
-	<footer class="py-1 bg-dark">
+		<footer th:fragment="footer" class="bg-info text-center text-white fixed-bottom">
 		<div class="container">
-			<p class="bg-dark text-center text-white">GRUPO 18</p>
+			<p>Consultorio</p>
 		</div>
-	</footer>	
+
+		<script type="text/javascript" th:src="@{vendor/bootstrap/jquery/jquery.slim.min.js}"></script>
+		<script type="text/javascript" th:src="@{vendor/bootstrap/js/popper.min.js}"></script>
+		<script type="text/javascript" th:src="@{vendor/bootstrap/js/bootstrap.min.js}"></script>
+	</footer>
 	
 	<!-- Bootstrap core JavaScript -->
 	<script src="vendor/jquery/jquery.min.js"></script>
