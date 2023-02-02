@@ -57,11 +57,12 @@
 
 			<form action="#" th:action="@{/perfiles/}" th:object="${perfil}" method="post">
 				<input type="hidden" th:field="*{id}" />
-				<p> Rol del Perfil: <input type="text" th:field="*{rol}" />
-					<small class="form-text text-danger" th:if="${#fields.hasErrors('rol')}"
-					th:errors="*{rol}" >
-				    </small>
-					</p>
+					<div class="form-group col-md-3">
+				<label>Rol del Perfil:</label>
+				<input class="form-control" type="text" th:field="*{rol}">
+				<small class="form-text text-danger" th:if="${#fields.hasErrors('rol')}"
+				th:errors="*{rol}"></small>
+				</div>
 
 				<input type="submit" />
 			</form>
