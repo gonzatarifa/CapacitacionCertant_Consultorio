@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<title>UNLa</title>
+
+	<!-- Bootstrap core CSS -->
+	<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Custom styles for this template -->
+	<link href="css/modern-business.css" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+	
+	<!-- Navigation -->
+	<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+		<div class="container">
+			<a class="navbar-brand" href="/index">UNLa</a>
+			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+				data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+					
+					<li class="nav-item">
+						<a class="nav-link" sec:authorize="hasAnyAuthority('Auditor', 'Administrador')"
+							th:href="@{/usuarios/lista/}">Usuarios</a>
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link" sec:authorize="hasAnyAuthority('Auditor', 'Administrador')"
+							th:href="@{/perfiles/lista/}">Perfiles</a>
+					</li>
+					
+					<li class="nav-item">
+						<a class="nav-link" sec:authorize="hasAnyAuthority('Auditor', 'Administrador')"
+							th:href="@{/departamento/lista/}">Departamentos</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" sec:authorize="hasAnyAuthority('Auditor', 'Administrador')"
+							th:href="@{/aulas/lista/}">Aulas</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" sec:authorize="hasAnyAuthority('Auditor', 'Administrador')"
+							th:href="@{/espacios/lista/}">Espacios</a>
+					</li>
+
+					
+					<li class="nav-item">
+						<a class="nav-link" sec:authorize="hasAnyAuthority('Auditor', 'Administrador')"
+							th:href="@{/carrera/lista/}">Carreras</a>
+					</li>
+					
+					<li class="nav-item">
+						<a class="nav-link" sec:authorize="hasAnyAuthority('Auditor', 'Administrador')"
+							th:href="@{/materia/lista/}">Materia</a>
+					</li>
+					
+
+					<li class="nav-item">
+						<a class="nav-link" sec:authorize="hasAnyAuthority('Auditor', 'Administrador')"
+							th:href="@{/nota-pedido}">Pedidos</a>
+					</li>
+
+
+					<li class="nav-item dropdown">
+						<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle"
+							data-toggle="dropdown" href="#" id="navbarDropdownBlog">Sesion</a>
+						<div aria-labelledby="navbarDropdownBlog" class="dropdown-menu dropdown-menu-right">
+							<form sec:authorize="anonymous" th:action="@{/login}" method="post">
+								<input class="dropdown-item" style="cursor:pointer" type="submit"
+									value="Iniciar sesión" />
+							</form>
+
+							<form sec:authorize="authenticated" th:action="@{/logout}" method="post">
+								<input class="dropdown-item" style="cursor:pointer" type="submit"
+									value="Cerrar sesión" />
+							</form>
+
+						</div>
+					</li>
+					
+			</div>
+			
+			</li>	
+			</ul>
+		</div>
+		</div>
+	</nav>
+	
+	<header>
+		<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+			<ol class="carousel-indicators">
+				<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+			</ol>
+			<div class="carousel-inner" role="listbox">
+				<div class="carousel-item active"
+					style="background-image: url('https://pbs.twimg.com/media/DqUigO_WwAEV67F.jpg')">
+					<div class="carousel-caption d-none d-md-block">
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</header>
+
+	<!-- /.container -->
+	<div class="container" id="documentacion">
+		<h1 class="bg-white text-center text-dark">SISTEMA DE GESTION DE AULAS</h1>
+		
+		<p class="bg-white text-center text-dark"><i>Trabajo practico para la materia OO2:</i></p>
+
+				<section class="content-section bg-white text-dark text-center" id="services">
+            <div class="container px-4 px-lg-2">
+                <div class="content-section-heading">
+                    <h4 class="mb-5">Integrantes:</h4>
+                </div>
+                <div class="row gx-4 gx-lg-5">
+                    <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+                        <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-user"></i></span>
+                        <h4><strong>Gonzalo Tarifa</strong></h4>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+                        <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-user"></i></span>
+                        <h4><strong>Gonzalo Boquete</strong></h4>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
+                        <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-user"></i></span>
+                        <h4><strong>Julian Kominovic</strong></h4> 
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
+                        <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-user"></i></span>
+                        <h4><strong>Miguel Caraballo</strong></h4>
+                    </div>
+                </div>
+            </div>
+        </section>	
+		<p></p>
+
+	</div>
+	<!-- Footer -->
+	<footer class="py-1 bg-dark">
+		<div class="container">
+			<p class="bg-dark text-center text-white">GRUPO 18</p>
+		</div>
+	</footer>	
+	
+	<!-- Bootstrap core JavaScript -->
+	<script src="vendor/jquery/jquery.min.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	
+</body>
+
+</html>
