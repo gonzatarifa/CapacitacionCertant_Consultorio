@@ -41,6 +41,11 @@
 						<a class="nav-link" sec:authorize="hasAnyAuthority('Auditor', 'Administrador')"
 							th:href="@{/especialidad/lista/}">Especialidad</a>
 					</li>
+					
+					<li class="nav-item">
+						<a class="nav-link" sec:authorize="hasAnyAuthority('Auditor', 'Administrador')"
+							th:href="@{/especialista/lista/}">Especialista</a>
+					</li>
 
 					<li class="nav-item"><a class="nav-link" href="/logout">Cerrar
 							sesion</a>
@@ -100,11 +105,11 @@
 
 					<td sec:authorize="hasAuthority('Administrador')"><a
 						class="btn btn-success btn-sm"
-						th:href="@{/paciente/lista/edit/}+${li.id}" th:text="Editar"
+						th:href="@{/paciente/lista/edit/}+${li.idPaciente}" th:text="Editar"
 						title="Editar paciente"> </a></td>
 					<td sec:authorize="hasAuthority('Administrador')"><a
 						class="btn btn-danger btn-sm"
-						th:href="@{/paciente/lista/delete/}+${li.id}" th:text="Eliminar"
+						th:href="@{/paciente/lista/delete/}+${li.idPaciente}" th:text="Eliminar"
 						title="Eliminar paciente"
 						onclick="return confirm('Esta seguro de eliminar el paciente?');">
 					</a></td>

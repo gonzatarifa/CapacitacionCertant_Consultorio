@@ -29,4 +29,7 @@ public class ViewRouteHelper {
 	public final static String ESPECIALIDAD_CREAR = "especialidad/crear";
 	public final static String ESPECIALIDAD_REDIRECT_LISTA = "redirect:/especialidad/lista";
 	
+	public final static String ESPECIALISTA_LISTA = "especialista/lista";
+	public final static String ESPECIALISTA_CREAR = "especialista/crear";
+	public final static String ESPECIALISTA_REDIRECT_LISTA = "redirect:/especialista/lista";
 }

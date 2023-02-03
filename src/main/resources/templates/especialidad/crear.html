@@ -36,6 +36,11 @@
 						<a class="nav-link" sec:authorize="hasAnyAuthority('Auditor', 'Administrador')"
 							th:href="@{/especialidad/lista/}">Especialidad</a>
 					</li>
+					
+					<li class="nav-item">
+						<a class="nav-link" sec:authorize="hasAnyAuthority('Auditor', 'Administrador')"
+							th:href="@{/especialista/lista/}">Especialista</a>
+					</li>
 			
 					<li class="nav-item">
 						<a class="nav-link" href="/logout">Cerrar sesion</a>
@@ -66,7 +71,7 @@
 		<div class="card-body">
 
 			<form action="#" th:action="@{/especialidad/}" th:object="${especialidad}" method="post">
-				<input type="hidden" th:field="*{id}" />
+				<input type="hidden" th:field="*{idEspecialidad}" />
 				
 			  <div class="form-group col-md-3">
 				<label>Nombre:</label>
