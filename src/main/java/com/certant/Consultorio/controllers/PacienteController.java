@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,6 +38,23 @@ public class PacienteController {
 	
 	@PostMapping("/")
 	public String guardar(@Valid @ModelAttribute Paciente paciente,BindingResult result,Model model,RedirectAttributes attribute) {
+		if(pacienteService.getByDni(paciente.getDni())!=null && pacienteService.getByDni(paciente.getDni()).getIdPaciente()!=paciente.getIdPaciente()) {
+			FieldError error = new FieldError("paciente", "dni", "Ya existe un paciente con ese dni");
+			result.addError(error);
+		}
+		
+		if(pacienteService.getByEmail(paciente.getEmail())!=null && pacienteService.getByEmail(paciente.getEmail()).getIdPaciente()!=paciente.getIdPaciente()) {
+			FieldError error = new FieldError("paciente", "email", "Ya existe un paciente con ese email");
+			result.addError(error);
+		}
+		
+		if(result.hasErrors()) {
+			model.addAttribute("titulo", "Formulario: Nuevo Paciente");
+			model.addAttribute("paciente", paciente);
+			System.out.println("Se encontraron Errores en el formulario!");
+			return ViewRouteHelper.PACIENTE_CREAR;
+		}
+		
 		pacienteService.save(paciente);
 		System.out.println("paciente guardado con exito!");
 		attribute.addFlashAttribute("success", "Paciente agregado con exito");

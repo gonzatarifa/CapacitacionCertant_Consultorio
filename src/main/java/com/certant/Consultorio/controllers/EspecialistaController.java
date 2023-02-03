@@ -18,7 +18,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.certant.Consultorio.entities.Especialidad;
 import com.certant.Consultorio.entities.Especialista;
-import com.certant.Consultorio.entities.Usuario;
 import com.certant.Consultorio.helpers.ViewRouteHelper;
 import com.certant.Consultorio.services.IEspecialidadService;
 import com.certant.Consultorio.services.IEspecialistaService;

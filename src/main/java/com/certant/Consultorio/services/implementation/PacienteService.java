@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import com.certant.Consultorio.entities.Paciente;
@@ -36,6 +37,16 @@ public class PacienteService implements IPacienteService {
 	public void save(Paciente paciente) {
 		pacienteRepository.save(paciente);
 
+	}
+	
+	@Override
+	public Paciente getByEmail(@Param("email") String email) {
+		return pacienteRepository.getByEmail(email);
+	}
+
+	@Override
+	public Paciente getByDni(@Param("dni") int dni) {
+		return pacienteRepository.getByDni(dni);
 	}
 
 }
