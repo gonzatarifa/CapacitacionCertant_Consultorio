@@ -33,6 +33,11 @@
 						<a class="nav-link" sec:authorize="hasAnyAuthority('Auditor', 'Administrador')"
 							th:href="@{/paciente/lista/}">Pacientes</a>
 					</li>
+					
+					<li class="nav-item">
+						<a class="nav-link" sec:authorize="hasAnyAuthority('Auditor', 'Administrador')"
+							th:href="@{/especialidad/lista/}">Especialidad</a>
+					</li>
 
 					<li class="nav-item">
 						<a class="nav-link" href="/logout">Cerrar sesion</a>

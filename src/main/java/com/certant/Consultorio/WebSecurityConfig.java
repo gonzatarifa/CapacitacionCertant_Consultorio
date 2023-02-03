@@ -44,7 +44,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/usuarios/lista/**").hasAnyAuthority("Auditor", "Administrador")
 				
 				.antMatchers("/paciente/").hasAuthority("Administrador").antMatchers("/paciente/lista")
-				.hasAnyAuthority("Auditor", "Administrador")
+				.hasAnyAuthority("Auditor", "Administrador").antMatchers("/paciente/lista/edit/**")
+				.hasAuthority("Administrador").antMatchers("/paciente/lista/delete/**")
+				.hasAuthority("Administrador")
+				
+				.antMatchers("/especialidad/").hasAuthority("Administrador").antMatchers("/especialidad/lista")
+				.hasAnyAuthority("Auditor", "Administrador").antMatchers("/especialidad/lista/edit/**")
+				.hasAuthority("Administrador").antMatchers("/especialidad/lista/delete/**")
+				.hasAuthority("Administrador")
 
 				.anyRequest().authenticated().and().formLogin().permitAll().and().logout().permitAll();
 	}

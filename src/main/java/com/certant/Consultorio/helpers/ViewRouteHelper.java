@@ -25,4 +25,8 @@ public class ViewRouteHelper {
 	public final static String PACIENTE_CREAR = "paciente/crear";	
 	public final static String PACIENTE_REDIRECT_LISTA = "redirect:/paciente/lista";	
 	
+	public final static String ESPECIALIDAD_LISTA = "especialidad/lista";
+	public final static String ESPECIALIDAD_CREAR = "especialidad/crear";
+	public final static String ESPECIALIDAD_REDIRECT_LISTA = "redirect:/especialidad/lista";
+	
 }
