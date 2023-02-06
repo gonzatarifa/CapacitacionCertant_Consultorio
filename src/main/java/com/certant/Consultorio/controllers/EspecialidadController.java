@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -36,6 +37,18 @@ public class EspecialidadController {
 	
 	@PostMapping("/")
 	public String guardar(@Valid @ModelAttribute Especialidad especialidad,BindingResult result,Model model,RedirectAttributes attribute) {
+		if(especialidadService.getByUsername(especialidad.getNombre())!=null && especialidadService.getByUsername(especialidad.getNombre()).getIdEspecialidad()!=especialidad.getIdEspecialidad()) {
+			FieldError error = new FieldError("especialidad", "nombre", "Ya existe una especialidad con ese nombre");
+			result.addError(error);
+		}
+		
+		if(result.hasErrors()) {
+			model.addAttribute("titulo", "Formulario: Nueva Especialidad");
+			model.addAttribute("especialidad", especialidad);
+			System.out.println("Se encontraron Errores en el formulario!");
+			return ViewRouteHelper.ESPECIALIDAD_CREAR;
+		}
+		
 		especialidadService.save(especialidad);
 		System.out.println("especialidad guardada con exito!");
 		attribute.addFlashAttribute("success", "Especialidad agregada con exito");

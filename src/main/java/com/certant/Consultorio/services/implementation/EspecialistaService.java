@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import com.certant.Consultorio.entities.Especialista;
@@ -35,6 +36,11 @@ public class EspecialistaService implements IEspecialistaService {
 	@Override
 	public void save(Especialista especialista) {
 		especialistaRepository.save(especialista);
+	}
+
+	@Override
+	public Especialista getByDni(@Param("dni") int dni) {
+		return especialistaRepository.getByDni(dni);
 	}
 
 }

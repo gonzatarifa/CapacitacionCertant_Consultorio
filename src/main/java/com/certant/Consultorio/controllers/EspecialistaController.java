@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -50,6 +51,19 @@ public class EspecialistaController {
 		for (Especialidad es : listaEspecialidad) {
 			especialidad.add(es);
 		}
+		
+		if(especialistaService.getByDni(especialista.getDni())!=null && especialistaService.getByDni(especialista.getDni()).getIdEspecialista()!=especialista.getIdEspecialista()) {
+			FieldError error = new FieldError("especialista", "dni", "Ya existe un especialista con ese dni");
+			result.addError(error);
+		}
+		
+		if(result.hasErrors()) {
+			model.addAttribute("titulo", "Formulario: Nuevo Especialista");
+			model.addAttribute("especialista", especialista);
+			model.addAttribute("especialidad", especialidadService.getAll());
+			System.out.println("Se encontraron Errores en el formulario!");
+			return ViewRouteHelper.ESPECIALISTA_CREAR;
+			}
 		
 		especialistaService.save(especialista);
 		System.out.println("Especialista guardado con exito!");

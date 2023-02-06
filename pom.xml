@@ -8,11 +8,11 @@
 		<version>2.6.7</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.unla</groupId>
-	<artifactId>Grupo-18-OO2-2022</artifactId>
+	<groupId>com.certant</groupId>
+	<artifactId>Capacitacion23-Consultorio</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Grupo-18-OO2-2022</name>
-	<description>TP OO2 2022</description>
+	<name>zCapacitacion23-Consultorio</name>
+	<description>capacitacion 2023</description>
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
