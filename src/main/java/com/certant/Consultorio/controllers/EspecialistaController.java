@@ -13,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -77,4 +78,22 @@ public class EspecialistaController {
 		model.addAttribute("lista", especialistaService.getAll());
 		return ViewRouteHelper.ESPECIALISTA_LISTA;
 	}
+	
+	@GetMapping("lista/edit/{id}")
+	public String editar(@PathVariable("id") long id,Model model) {	
+		Especialista especialista = especialistaService.buscar(id);
+		model.addAttribute("titulo", "Editar especialista");
+		model.addAttribute("especialista", especialista);
+		model.addAttribute("especialidad", especialidadService.getAll());
+		return ViewRouteHelper.ESPECIALISTA_CREAR;
+	}
+	
+	@GetMapping("lista/delete/{id}")
+	public String eliminar(@PathVariable("id")long id,RedirectAttributes attribute) {
+		especialistaService.eliminar(id);
+		System.out.println("eliminado con exito");
+		attribute.addFlashAttribute("warning", "Especialista eliminado con exito");
+		return ViewRouteHelper.ESPECIALISTA_REDIRECT_LISTA;
+	}
+	
 }

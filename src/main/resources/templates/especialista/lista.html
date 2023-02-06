@@ -103,13 +103,13 @@
 
 					<td sec:authorize="hasAuthority('Administrador')"><a
 						class="btn btn-success btn-sm"
-						th:href="@{/especialidad/lista/edit/}+${li.idEspecialista}" th:text="Editar"
-						title="Editar especialidad"> </a></td>
+						th:href="@{/especialista/lista/edit/}+${li.idEspecialista}" th:text="Editar"
+						title="Editar especialista"> </a></td>
 					<td sec:authorize="hasAuthority('Administrador')"><a
 						class="btn btn-danger btn-sm"
-						th:href="@{/especialidad/lista/delete/}+${li.idEspecialista}" th:text="Eliminar"
-						title="Eliminar especialidad"
-						onclick="return confirm('Esta seguro de eliminar la especialidad?');">
+						th:href="@{/especialista/lista/delete/}+${li.idEspecialista}" th:text="Eliminar"
+						title="Eliminar especialista"
+						onclick="return confirm('Esta seguro de eliminar el especialista?');">
 					</a></td>
 				</tr>
 
