@@ -34,29 +34,34 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.csrf().disable();
 		http.authorizeRequests().antMatchers("/index", "/", "/css/**", "/images/**", "/js/**", "/vendor/**").permitAll()
 				.antMatchers("/perfiles/").hasAuthority("Administrador").antMatchers("/perfiles/lista")
-				.hasAnyAuthority("Auditor", "Administrador").antMatchers("/perfiles/lista/edit/**")
+				.hasAuthority("Administrador").antMatchers("/perfiles/lista/edit/**")
 				.hasAuthority("Administrador").antMatchers("/perfiles/lista/delete/**").hasAuthority("Administrador")
-				.antMatchers("/perfiles/lista/**").hasAnyAuthority("Auditor", "Administrador")
+				.antMatchers("/perfiles/lista/**").hasAuthority("Administrador")
 
 				.antMatchers("/usuarios/").hasAuthority("Administrador").antMatchers("/usuarios/lista")
-				.hasAnyAuthority("Auditor", "Administrador").antMatchers("/usuarios/lista/edit/**")
+				.hasAuthority("Administrador").antMatchers("/usuarios/lista/edit/**")
 				.hasAuthority("Administrador").antMatchers("/usuarios/lista/delete/**").hasAuthority("Administrador")
-				.antMatchers("/usuarios/lista/**").hasAnyAuthority("Auditor", "Administrador")
+				.antMatchers("/usuarios/lista/**").hasAuthority("Administrador")
 				
 				.antMatchers("/paciente/").hasAuthority("Administrador").antMatchers("/paciente/lista")
-				.hasAnyAuthority("Auditor", "Administrador").antMatchers("/paciente/lista/edit/**")
+				.hasAuthority("Administrador").antMatchers("/paciente/lista/edit/**")
 				.hasAuthority("Administrador").antMatchers("/paciente/lista/delete/**")
 				.hasAuthority("Administrador")
 				
 				.antMatchers("/especialidad/").hasAuthority("Administrador").antMatchers("/especialidad/lista")
-				.hasAnyAuthority("Auditor", "Administrador").antMatchers("/especialidad/lista/edit/**")
+				.hasAuthority("Administrador").antMatchers("/especialidad/lista/edit/**")
 				.hasAuthority("Administrador").antMatchers("/especialidad/lista/delete/**")
 				.hasAuthority("Administrador")
 				
 				.antMatchers("/especialista/").hasAuthority("Administrador").antMatchers("/especialista/lista")
-				.hasAnyAuthority("Auditor", "Administrador").antMatchers("/especialista/lista/edit/**")
+				.hasAuthority("Administrador").antMatchers("/especialista/lista/edit/**")
 				.hasAuthority("Administrador").antMatchers("/especialista/lista/delete/**")
 				.hasAuthority("Administrador")
+				
+				.antMatchers("/turno/").hasAnyAuthority("Auditor", "Administrador").antMatchers("/turno/lista")
+				.hasAnyAuthority("Auditor", "Administrador").antMatchers("/turno/lista/edit/**")
+				.hasAnyAuthority("Auditor", "Administrador").antMatchers("/turno/lista/delete/**")
+				.hasAnyAuthority("Auditor", "Administrador")
 
 				.anyRequest().authenticated().and().formLogin().permitAll().and().logout().permitAll();
 	}

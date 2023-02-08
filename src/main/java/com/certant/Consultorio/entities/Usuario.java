@@ -12,7 +12,6 @@ import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -52,7 +51,6 @@ public class Usuario {
 
 	@Column(name = "contrasena")
 	@NotEmpty(message="el campo no debe estar vacio") 
-	//@Size(min=0, max=8 , message="la contraseña no puede superar los 8 digitos")
 	private String contrasena;
 
 	@ManyToOne

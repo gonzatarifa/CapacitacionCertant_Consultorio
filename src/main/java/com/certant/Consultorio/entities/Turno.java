@@ -1,5 +1,6 @@
 package com.certant.Consultorio.entities;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 
 import javax.persistence.Column;
@@ -11,7 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -21,38 +21,35 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Data @NoArgsConstructor
-@Table(name ="especialista")
-public class Especialista {
+@Table(name = "turno")
+public class Turno {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long idEspecialista;
+	private long idTurno;
 	
-	@Column(name = "nombre")
-	@NotEmpty(message="el campo no debe estar vacio") 
-	private String nombre;
-
-	@Column(name = "apellido")
-	@NotEmpty(message="el campo no debe estar vacio") 
-	private String apellido;
+	@Column(name = "fecha")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@NotNull(message="Ingrese una fecha")
+	private LocalDate fecha;
 	
-	@Column(name = "dni")
-	@NotNull
-	private int dni;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name ="idEspecialidad",nullable=false)
-	private Especialidad especialidad;
-	
+	@Column(name = "hora")
 	@DateTimeFormat(pattern = "HH:mm")
-	@Column(name="hora_inicio")
 	@NotNull
-	private LocalTime horaInicio;
+	private LocalTime hora;
 	
-	
+	@Column(name = "hora_fin")
 	@DateTimeFormat(pattern = "HH:mm")
-	@Column(name="hora_fin")
-	@NotNull
 	private LocalTime horaFin;
 	
-
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="idPaciente",nullable=false)
+	private Paciente paciente;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="idEspecialista",nullable=false)
+	private Especialista especialista;
+	
+	@Column(name ="asistencia")
+	private boolean asistencia;
+	
 }

@@ -32,4 +32,8 @@ public class ViewRouteHelper {
 	public final static String ESPECIALISTA_LISTA = "especialista/lista";
 	public final static String ESPECIALISTA_CREAR = "especialista/crear";
 	public final static String ESPECIALISTA_REDIRECT_LISTA = "redirect:/especialista/lista";
+	
+	public final static String TURNO_LISTA = "turno/lista";
+	public final static String TURNO_CREAR = "turno/crear";
+	public final static String TURNO_REDIRECT_LISTA = "redirect:/turno/lista";
 }

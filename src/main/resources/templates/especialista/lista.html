@@ -24,27 +24,34 @@
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
 
-					<li class="nav-item"><a class="nav-link"
-						href="/usuarios/lista">Usuarios</a>
+				<li class="nav-item">
+						<a class="nav-link" sec:authorize="hasAuthority('Administrador')"
+							th:href="@{/usuarios/lista/}">Usuarios</a>
 					</li>
 
 					<li class="nav-item">
-						<a class="nav-link" href="/perfiles/lista">Perfiles</a>
+						<a class="nav-link" sec:authorize="hasAuthority('Administrador')"
+							th:href="@{/perfiles/lista/}">Perfiles</a>
 					</li>
 					
 					<li class="nav-item">
-						<a class="nav-link" sec:authorize="hasAnyAuthority('Auditor', 'Administrador')"
+						<a class="nav-link" sec:authorize="hasAuthority('Administrador')"
 							th:href="@{/paciente/lista/}">Pacientes</a>
 					</li>
 					
 					<li class="nav-item">
-						<a class="nav-link" sec:authorize="hasAnyAuthority('Auditor', 'Administrador')"
+						<a class="nav-link" sec:authorize="hasAuthority('Administrador')"
 							th:href="@{/especialidad/lista/}">Especialidad</a>
 					</li>
 					
 					<li class="nav-item">
-						<a class="nav-link" sec:authorize="hasAnyAuthority('Auditor', 'Administrador')"
+						<a class="nav-link" sec:authorize="hasAuthority('Administrador')"
 							th:href="@{/especialista/lista/}">Especialista</a>
+					</li>
+					
+					<li class="nav-item">
+						<a class="nav-link" sec:authorize="hasAnyAuthority('Auditor', 'Administrador')"
+							th:href="@{/turno/lista/}">Turnos</a>
 					</li>
 
 					<li class="nav-item"><a class="nav-link" href="/logout">Cerrar
@@ -89,6 +96,8 @@
 					<th scope="col">Apellido</th>
 					<th scope="col">DNI</th>
 					<th scope="col">Especialidad</th>
+					<th scope="col">Hora inicio</th>
+					<th scope="col">Hora fin</th>
 					<th scope="col" sec:authorize="hasAuthority('Administrador')">Editar</th>
 					<th scope="col" sec:authorize="hasAuthority('Administrador')">Eliminar</th>
 				</tr>
@@ -100,6 +109,8 @@
 					<th scope="row" th:text="${li.apellido}"></th>
 					<th scope="row" th:text="${li.dni}"></th>
 					<th scope="row" th:text="${li.especialidad.nombre}"></th>
+					<th scope="row" th:text="${li.horaInicio}"></th>
+					<th scope="row" th:text="${li.horaFin}"></th>
 
 					<td sec:authorize="hasAuthority('Administrador')"><a
 						class="btn btn-success btn-sm"

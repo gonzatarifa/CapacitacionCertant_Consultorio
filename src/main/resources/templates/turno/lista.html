@@ -20,7 +20,7 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
-				<li class="nav-item">
+					<li class="nav-item">
 						<a class="nav-link" sec:authorize="hasAuthority('Administrador')"
 							th:href="@{/usuarios/lista/}">Usuarios</a>
 					</li>
@@ -80,44 +80,44 @@
 
 	<div class="container">
 
-		<a class="btn btn-primary btn-sm" sec:authorize="hasAuthority('Administrador')" th:href="@{/usuarios/}"
-			th:text="'Crear Usuario'" title="Crear nuevo usuario">
+		<a class="btn btn-primary btn-sm" sec:authorize="hasAnyAuthority('Auditor', 'Administrador')" th:href="@{/turno/}"
+			th:text="'Crear Turno'" title="Crear nuevo turno">
 		</a>
 
 
 		<table class="table">
 			<thead class="thead-dark">
 				<tr>
-					<th scope="col">Nombre</th>
-					<th scope="col">Apellido</th>
-					<th scope="col">Tipo documento</th>
-					<th scope="col">Documento</th>
-					<th scope="col">Correo electronico</th>
-					<th scope="col">Usuario</th>
-					<th scope="col">Perfil</th>
-					<th scope="col" sec:authorize="hasAuthority('Administrador')">Editar</th>
-					<th scope="col" sec:authorize="hasAuthority('Administrador')">Eliminar</th>
+					<th scope="col">Fecha</th>
+					<th scope="col">Hora</th>
+ 					<th scope="col">Hora Fin</th> 
+					<th scope="col">Paciente</th>
+					<th scope="col">Especialista</th>
+					<th scope="col">Especialidad</th>
+					<th scope="col">Asistencia</th>
+					<th scope="col" sec:authorize="hasAnyAuthority('Auditor', 'Administrador')">Editar</th>
+					<th scope="col" sec:authorize="hasAnyAuthority('Auditor', 'Administrador')">Eliminar</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr class="table-info" th:each="li:${lista}">
 
-					<th scope="row" th:text="${li.nombre}"></th>
-					<th scope="row" th:text="${li.apellido}"></th>
-					<th scope="row" th:text="${li.tipoDocumento}"></th>
-					<th scope="row" th:text="${li.documento}"></th>
-					<th scope="row" th:text="${li.correoElectronico}"></th>
-					<th scope="row" th:text="${li.nombreDeUsuario}"></th>
-					<th scope="row" th:text="${li.perfiles}"></th>
+					<th scope="row" th:text="${li.fecha}"></th>
+					<th scope="row" th:text="${li.hora}"></th>
+ 					<th scope="row" th:text="${li.horaFin}"></th> 
+					<th scope="row" th:text="${li.paciente.nombre}+' '+${li.paciente.apellido}"></th>
+					<th scope="row" th:text="${li.especialista.nombre}+' '+${li.especialista.apellido}"></th>
+					<th scope="row" th:text="${li.especialista.especialidad.nombre}"></th>
+					<th scope="row" th:text="${li.asistencia}"></th>
 
 
-					<td sec:authorize="hasAuthority('Administrador')">
-						<a class="btn btn-success btn-sm" th:href="@{/usuarios/lista/edit/}+${li.id}" th:text="Editar"
+					<td sec:authorize="hasAnyAuthority('Auditor', 'Administrador')">
+						<a class="btn btn-success btn-sm" th:href="@{/turno/lista/edit/}+${li.idTurno}" th:text="Editar"
 							title="Editar registro">
 						</a>
 					</td>
-					<td sec:authorize="hasAuthority('Administrador')">
-						<a class="btn btn-danger btn-sm" th:href="@{/usuarios/lista/delete/}+${li.id}"
+					<td sec:authorize="hasAnyAuthority('Auditor', 'Administrador')">
+						<a class="btn btn-danger btn-sm" th:href="@{/turno/lista/delete/}+${li.idTurno}"
 							th:text="Eliminar" title="Eliminar registro"
 							onclick="return confirm('Esta seguro de eliminar el registro?');">
 						</a>
@@ -126,12 +126,6 @@
 
 			</tbody>
 		</table>
-		
-		<a class="nav-link float-right" sec:authorize="hasAuthority('Auditor')"
-			th:href="@{/usuarios/lista/(format=pdf)}" title="Exportar a PDF" target="_blank">
-
-			<img class="img-responsive center-box" th:src="@{/images/IconoPDF.png}" height="auto">
-		</a>
 
 	</div>
 

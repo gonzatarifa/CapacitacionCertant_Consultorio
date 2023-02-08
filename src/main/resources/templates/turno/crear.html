@@ -45,7 +45,7 @@
 							th:href="@{/especialista/lista/}">Especialista</a>
 					</li>
 					
-					<li class="nav-item">
+						<li class="nav-item">
 						<a class="nav-link" sec:authorize="hasAnyAuthority('Auditor', 'Administrador')"
 							th:href="@{/turno/lista/}">Turnos</a>
 					</li>
@@ -78,45 +78,94 @@
 		<div class="card-header bg-dark text-white" th:text="${titulo}"> </div>
 		<div class="card-body">
 
-			<form action="#" th:action="@{/paciente/}" th:object="${paciente}" method="post">
-				<input type="hidden" th:field="*{idPaciente}" />
+			<form action="#" th:action="@{/turno/}" th:object="${turno}" method="post">
+				<input type="hidden" th:field="*{idTurno}" />
 				
+			 <div class="form-group col-md-3">
+				<label>Paciente</label>
+				<select class="form-control" th:field="*{paciente.idPaciente}" id="paciente">
+				<option th:if="!${turno.idTurno}" value="0">Seleccione un paciente</option>
+				<option th:each="pac:${paciente}"
+					    th:value="${pac.idPaciente}"
+					   th:text="${pac.nombre}+' '+${pac.apellido}"/></p>
+				</select>
+				</div>
+				
+				<div class="form-group col-md-3">
+				<label>Especialista</label>
+				<select class="form-control" th:field="*{especialista.idEspecialista}" id="especialista">
+				<option th:if="!${turno.idTurno}" value="0">Seleccione un especialista</option>
+				<option th:each="esp:${especialista}"
+					    th:value="${esp.idEspecialista}"
+					   th:text="${esp.nombre}+' '+${esp.apellido}+' - '+${esp.especialidad.nombre}+' - '+${esp.horaInicio}+'/'+${esp.horaFin}"/></p>
+				</select>
+				</div>
+			 
 			  <div class="form-group col-md-3">
-				<label>Nombre:</label>
-				<input class="form-control" type="text" th:field="*{nombre}">
-				<small class="form-text text-danger" th:if="${#fields.hasErrors('nombre')}"
-				th:errors="*{nombre}"></small>
+				<label>Fecha:</label>
+				<input class="form-control" type="date" th:field="*{fecha}">
+				<small class="form-text text-danger" th:if="${#fields.hasErrors('fecha')}"
+				th:errors="*{fecha}"></small>
 				</div>
 				
-				<div class="form-group col-md-3">
-				<label>Apellido:</label>
-				<input class="form-control" type="text" th:field="*{apellido}">
-				<small class="form-text text-danger" th:if="${#fields.hasErrors('apellido')}"
-				th:errors="*{apellido}"></small>
-				</div>
-				  
-				  <div class="form-group col-md-3">
-				<label>Dni:</label>
-				<input class="form-control" type="number" th:field="*{dni}">
-				<small class="form-text text-danger" th:if="${#fields.hasErrors('dni')}"
-				th:errors="*{dni}"></small>
-				</div>
-				
-				<div class="form-group col-md-3">
-				<label>Email:</label>
-				<input class="form-control" type="text" th:field="*{email}">
-				<small class="form-text text-danger" th:if="${#fields.hasErrors('email')}"
-				th:errors="*{email}"></small>
-				</div>
-				
-				<div class="form-group col-md-3">
-				<label>Observaciones:</label>
-				<input class="form-control" type="text" th:field="*{observaciones}">
-				<small class="form-text text-danger" th:if="${#fields.hasErrors('observaciones')}"
-				th:errors="*{observaciones}"></small>
-				</div>
+			 <div class="form-group col-md-3">
+				<label>Hora:</label>
+				<input class="form-control" type="time" name="limitetiempo" list="listalimitestiempo" th:field="*{hora}">
+				<small class="form-text text-danger" th:if="${#fields.hasErrors('hora')}"
+				th:errors="*{hora}"></small>
+			</div> 
+			
+			<datalist id="listalimitestiempo">
+  				<option value="00:00">
+  				<option value="00:30">
+  				<option value="01:00">
+  				<option value="02:30">
+  				<option value="02:00">
+  				<option value="02:30">
+  				<option value="03:00">
+  				<option value="03:30">
+  				<option value="04:00">
+  				<option value="04:30">
+  				<option value="05:00">
+  				<option value="05:30">
+  				<option value="06:00">
+  				<option value="07:00">
+  				<option value="07:30">
+  				<option value="08:00">
+  				<option value="08:30">
+  				<option value="09:00">
+  				<option value="09:30">
+  				<option value="10:00">
+  				<option value="10:30">
+  				<option value="11:00">
+  				<option value="11:30">
+				<option value="12:00">
+  				<option value="12:30">
+  				<option value="13:00">
+  				<option value="13:30">
+  				<option value="14:00">
+  				<option value="14:30">
+  				<option value="15:00">
+  				<option value="15:30">
+  				<option value="16:00">
+  				<option value="16:30">
+  				<option value="17:00">
+  				<option value="17:30">
+  				<option value="18:00">
+  				<option value="18:30">
+  				<option value="19:00">
+  				<option value="19:30">
+  				<option value="20:00">
+  				<option value="20:30">
+  				<option value="21:00">
+  				<option value="21:30">
+  				<option value="22:00">
+  				<option value="22:30">
+  				<option value="23:00">
+  				<option value="23:30">
+			</datalist>
 
-				<input type="submit" />
+			<input type="submit" />
 			</form>
 		</div>
 	</div>

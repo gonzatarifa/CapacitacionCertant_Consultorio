@@ -27,6 +27,7 @@ import com.certant.Consultorio.services.IPerfilesService;
 import com.certant.Consultorio.services.IUsuarioService;
 
 
+
 @Controller
 @RequestMapping("/usuarios")
 
@@ -66,6 +67,7 @@ public class UsuarioController {
 				perfiles.add(p);
 			}
 		}
+
 		if(usuarioService.getByDni(usuario.getDocumento())!=null && usuarioService.getByDni(usuario.getDocumento()).getId()!=usuario.getId()) 
 		{
 			FieldError error = new FieldError("usuario", "documento", "Ya existe un usuario con ese documento");
