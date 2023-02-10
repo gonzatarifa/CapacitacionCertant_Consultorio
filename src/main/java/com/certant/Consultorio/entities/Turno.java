@@ -48,7 +48,7 @@ public class Turno {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="idEspecialista",nullable=false)
 	private Especialista especialista;
-	
+
 	@Column(name ="asistencia")
 	private boolean asistencia;
 	

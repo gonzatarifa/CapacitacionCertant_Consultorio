@@ -64,12 +64,18 @@ public class TurnoController {
 			result.addError(error);
 			}
 		}
-			
+		
+		
+		if(turno.getHora()==null) {
+			FieldError error = new FieldError("turno", "hora", "Seleccione una hora por favor.");
+			result.addError(error);
+		}else {
 		if(turno.getHora().isAfter(especialistaService.buscar(turno.getEspecialista().getIdEspecialista()).getHoraFin()) || turno.getHora().isBefore(especialistaService.buscar(turno.getEspecialista().getIdEspecialista()).getHoraInicio())) {
 				FieldError error = new FieldError("turno", "hora", "el especialista no trabaja a esa hora");
 				result.addError(error);
 			}
-			
+		}
+		
 		if(turno.getFecha()==null) {
 			FieldError error = new FieldError("turno", "fecha", "Seleccione una fecha por favor.");
 			result.addError(error);

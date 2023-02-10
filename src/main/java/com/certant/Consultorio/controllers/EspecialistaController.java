@@ -53,16 +53,6 @@ public class EspecialistaController {
 			especialidad.add(es);
 		}
 		
-		if(especialista.getHoraInicio().isBefore(especialidadService.buscar(especialista.getEspecialidad().getIdEspecialidad()).getHoraInicio()) || especialista.getHoraInicio().isAfter(especialidadService.buscar(especialista.getEspecialidad().getIdEspecialidad()).getHoraFin())) {
-			FieldError error = new FieldError("especialista", "horaInicio", "La especialidad trabaja desde las:  "+especialidadService.buscar(especialista.getIdEspecialista()).getHoraInicio());
-			result.addError(error);
-		}	
-		
-		if(especialista.getHoraFin().isAfter(especialidadService.buscar(especialista.getEspecialidad().getIdEspecialidad()).getHoraFin()) || especialista.getHoraFin().isBefore(especialidadService.buscar(especialista.getEspecialidad().getIdEspecialidad()).getHoraInicio())){
-			FieldError error = new FieldError("especialista", "horaFin", "La especialidad trabaja hasta las:  "+especialidadService.buscar(especialista.getIdEspecialista()).getHoraFin());
-			result.addError(error);
-		}
-		
 		if(especialistaService.getByDni(especialista.getDni())!=null && especialistaService.getByDni(especialista.getDni()).getIdEspecialista()!=especialista.getIdEspecialista()) {
 			FieldError error = new FieldError("especialista", "dni", "Ya existe un especialista con ese dni");
 			result.addError(error);

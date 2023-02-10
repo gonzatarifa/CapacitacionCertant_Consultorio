@@ -87,20 +87,6 @@
 				<small class="form-text text-danger" th:if="${#fields.hasErrors('nombre')}"
 				th:errors="*{nombre}"></small>
 				</div>
-				
-				 <div class="form-group col-md-3">
-				<label>Hora Inicio:</label>
-				<input class="form-control" type="time" th:field="*{horaInicio}">
-				<small class="form-text text-danger" th:if="${#fields.hasErrors('horaInicio')}"
-				th:errors="*{horaInicio}"></small>
-				</div>
-				 
-				 <div class="form-group col-md-3">
-				<label>Hora Fin:</label>
-				<input class="form-control" type="time" th:field="*{horaFin}">
-				<small class="form-text text-danger" th:if="${#fields.hasErrors('horaFin')}"
-				th:errors="*{horaFin}"></small>
-				</div>
 
 				<input type="submit" />
 			</form>
