@@ -22,6 +22,15 @@ public class TurnoService implements ITurnoService {
 		return turnoRepository.findAll();
 	}
 
+	
+	@Override
+	public List<Turno> getAll(String palabraClave) {
+		if(palabraClave != null) {
+			return turnoRepository.getAll(palabraClave);
+		}
+		return turnoRepository.findAll();
+	}
+
 	@Override
 	public Turno buscar(long id) {
 		return turnoRepository.findById(id).orElse(null);

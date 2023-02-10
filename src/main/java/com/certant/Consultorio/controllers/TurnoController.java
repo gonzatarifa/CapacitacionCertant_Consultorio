@@ -10,6 +10,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -111,8 +112,8 @@ public class TurnoController {
 	}
 	
 	@GetMapping("/lista")
-	public String listarTurnos(Model model) {
-		List<Turno> listaTurnos = turnoService.getAll();
+	public String listarTurnos(Model model,@Param("palabraClave") String palabraClave) {
+		List<Turno> listaTurnos = turnoService.getAll(palabraClave);
 		List<Turno> turnos = new ArrayList<Turno>();
 		for (Turno t : listaTurnos) {
 			if(t.isAsistencia()==false) {
@@ -121,6 +122,7 @@ public class TurnoController {
 		}
 		model.addAttribute("titulo", "Lista de Turnos");
 		model.addAttribute("lista", turnos);
+		model.addAttribute("palabraClave", palabraClave);
 		return ViewRouteHelper.TURNO_LISTA;
 	}
 	

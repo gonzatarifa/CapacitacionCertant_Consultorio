@@ -79,12 +79,22 @@
 	</div>
 
 	<div class="container">
-
+		
+		<form class="form-inline" th:action="@{/turno/lista/}">
+			<div class="form-group mb-2 "> 
+				<label>Filtrar :</label>
+			</div>
+			<div class="form-group mx-sm-3 mb-2 ">
+				<input type="text" name="palabraClave" class="form-control" id="palabraClave" th:value="${palabraClave}" placeholder="Ingrese palabra a buscar" required>
+			</div>
+			<input type="submit" class="btn btn-info mb-2" value="Buscar">
+			&nbsp;&nbsp;
+			<input type="button" class="btn btn-secondary mb-2" value="Limpiar" onclick="limpiarCampos()">
+		</form>
 		<a class="btn btn-primary btn-sm" sec:authorize="hasAnyAuthority('Auditor', 'Administrador')" th:href="@{/turno/}"
 			th:text="'Crear Turno'" title="Crear nuevo turno">
 		</a>
-
-
+			
 		<table class="table">
 			<thead class="thead-dark">
 				<tr>
@@ -128,6 +138,12 @@
 		</table>
 
 	</div>
+	
+	<script type="text/javascript">
+	function limpiarCampos(){
+		window.location='/turno/lista/';
+	}
+	</script>
 
 
 	<footer th:fragment="footer" class="bg-info text-center text-white fixed-bottom">

@@ -10,6 +10,8 @@ import com.certant.Consultorio.entities.Turno;
 @Service
 public interface ITurnoService {
 	public List<Turno> getAll();
+	
+	public List<Turno> getAll(String palabraClave);
 
 	public Turno buscar(long id);
 
