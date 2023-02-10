@@ -58,7 +58,7 @@ public class TurnoController {
 	
 	@PostMapping("/")
 	public String guardar(@Valid @ModelAttribute Turno turno,BindingResult result, Model model, RedirectAttributes attribute) {
-
+		
 		for (Turno t1 : turnoService.getAll()) {
 			if((turno.getFecha().isEqual(t1.getFecha())&& turno.getHora().compareTo(t1.getHora())==0 && (turno.getEspecialista().getIdEspecialista()==t1.getEspecialista().getIdEspecialista()))) {
 			FieldError error = new FieldError("turno", "hora", "Ya existe un turno asignado a esa hora");
@@ -66,6 +66,12 @@ public class TurnoController {
 			}
 		}
 		
+		for (Turno t2 : turnoService.getAll()) {
+			if( (turno.getFecha().isEqual(t2.getFecha()) && turno.getHora().compareTo(t2.getHora())==0) && (turno.getPaciente().getIdPaciente()==t2.getPaciente().getIdPaciente()) ) {
+				FieldError error = new FieldError("turno", "hora", "Ya tienes un turno ese dia y horario con otro especialista");
+				result.addError(error);
+			}
+		}
 		
 		if(turno.getHora()==null) {
 			FieldError error = new FieldError("turno", "hora", "Seleccione una hora por favor.");
